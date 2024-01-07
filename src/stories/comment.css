@@ -1,0 +1,52 @@
+.comment-container {
+  position: relative;
+  width: 90vw;
+  max-width: 500px;
+  background-color: rgba(186, 186, 186, 0.497);
+  border-radius: 10px;
+}
+
+/* .comment-container * {
+  margin: 0;
+  padding: 0;
+} */
+
+.author-name {
+  margin: 0;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.reply-name {
+  padding: 3px 30px;
+  margin: 0;
+  font-size: 16px;
+}
+
+.comment-text {
+  padding: 0 0 15px 10px;
+  margin: 0;
+}
+
+.reply-text {
+  padding: 0 0 5px 30px;
+  margin: 0;
+}
+
+.reply-input {
+  font-size: 18px;
+  margin: 10px 0 0 30px;
+  width: 80vw;
+  max-width: 330px;
+  height: 30px;
+  padding: 0 8px;
+}
+
+.reply-line {
+  position: relative;
+  width: 90%;
+  left: 15px;
+  max-width: 480px;
+  height: 1px;
+  background-color: rgba(107, 107, 107, 0.121);
+}
