@@ -1,5 +1,6 @@
 import Container from "react-bootstrap/Container";
 import BlogCard from "./card";
+import locationsData from "../data/locationsData.json";
 
 const HomePage = (props: any) => {
   return (
@@ -13,7 +14,7 @@ const HomePage = (props: any) => {
           gap: 30,
         }}
       >
-        {props.cards.map((card: any) => (
+        {locationsData.map((card: any) => (
           <BlogCard
             key={card.locationId}
             locationId={card.locationId}

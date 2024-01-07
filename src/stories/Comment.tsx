@@ -5,12 +5,12 @@ import "./comment.css";
 type Props = {
   onReply: (replyTextInput: string) => void;
   onDelete: () => void;
-  user: string;
-  userId: string;
+  user?: string | null;
+  userId?: string | null;
   commentUsername: string;
   commentUsernameID: string;
   commentText: string;
-  replies: { replyId: string; replyUsername: string; replyText: string }[];
+  replies?: { replyId: string; replyUsername: string; replyText: string }[];
 };
 
 const Comment = ({
@@ -43,7 +43,7 @@ const Comment = ({
 
   const handleReplyChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const text = e.target.value;
-    setReplyText(text);
+    setReplyTextInput(text);
   };
 
   return (
@@ -64,7 +64,11 @@ const Comment = ({
           </div>
         ))}
       <input className="reply-input" onChange={handleReplyChange} />
-      <Button color="green" label="Reply" onClick={onReply} />
+      <Button
+        color="green"
+        label="Reply"
+        onClick={() => onReply(replyTextInput)}
+      />
     </div>
   );
 };

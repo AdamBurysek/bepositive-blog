@@ -1,0 +1,30 @@
+[
+  {
+    "locationId": 1,
+    "title": "Attersee",
+    "image": "/attersee.webp",
+    "desc": "Attersee, a picturesque destination, invites you to explore its beauty. The serene lake, surrounded by lush landscapes, offers a tranquil retreat. Must-visit attractions include charming lakeside villages and water activities. Immerse yourself in the mesmerizing allure of Attersee.",
+    "text": "Attersee, nestled in the Austrian Alps, enchants with its crystal-clear lake and surrounding mountains. A haven for water enthusiasts, the emerald waters beckon sailing and swimming. Charming villages offer a glimpse into local culture, with cobbled streets and cozy cafes. Hiking trails lead to panoramic vistas, where alpine landscapes unfold. Attersee's allure spans seasons—summer invites outdoor revelry, autumn blankets the hills in warm hues, and winter transforms it into a serene wonderland. Artists find inspiration in its tranquility, echoing the harmonious blend of nature and culture. Attersee promises a journey beyond the ordinary, a timeless escape into alpine magic."
+  },
+  {
+    "locationId": 2,
+    "title": "Mondsee",
+    "desc": "Mondsee beckons with its enchanting landscapes and historic charm. This idyllic destination boasts a stunning lake and the famous Mondsee Abbey. Dive into the rich history, enjoy water adventures, and savor local delicacies. A visit to Mondsee promises an unforgettable blend of culture and nature.",
+    "image": "/mondsee.jpg",
+    "text": "Nestled in Austria, Mondsee is a captivating destination with its eponymous lake, offering azure waters against an alpine backdrop. A haven for water enthusiasts, it provides sailing and swimming, while charming lakeside villages exude timeless allure with cobbled streets and cozy cafes. Hike into the hinterlands for panoramic vistas, where crisp air and pine scents invigorate. Mondsee transforms with the seasons—summer invites outdoor activities, autumn blankets hills in warm colors, and winter brings serene landscapes. Artists find inspiration in Mondsee's charm, where nature and culture blend seamlessly. In every season, Mondsee beckons with timeless allure, promising experiences beyond the ordinary—a journey to rejuvenate amidst the enchanting Austrian landscape."
+  },
+  {
+    "locationId": 3,
+    "title": "Wolfgangsee",
+    "desc": "Wolfgangsee captivates visitors with its breathtaking scenery and cultural treasures. Nestled in the Austrian Alps, this lake offers outdoor adventures and access to charming towns. Explore the iconic Schafberg Mountain and indulge in the cultural delights of Wolfgangsee.",
+    "image": "/wolfgangsee.jpg",
+    "text": "Nestled in Austria, Mondsee is a captivating destination with its eponymous lake, offering azure waters against an alpine backdrop. A haven for water enthusiasts, it provides sailing and swimming, while charming lakeside villages exude timeless allure with cobbled streets and cozy cafes. Hike into the hinterlands for panoramic vistas, where crisp air and pine scents invigorate. Mondsee transforms with the seasons—summer invites outdoor activities, autumn blankets hills in warm colors, and winter brings serene landscapes. Artists find inspiration in Mondsee's charm, where nature and culture blend seamlessly. In every season, Mondsee beckons with timeless allure, promising experiences beyond the ordinary—a journey to rejuvenate amidst the enchanting Austrian landscape."
+  },
+  {
+    "locationId": 4,
+    "title": "Salzburg",
+    "desc": "Salzburg, the city of Mozart and stunning baroque architecture, is a must-visit destination. Stroll through the historic Old Town, visit Mozart's birthplace, and be enchanted by the Hohensalzburg Fortress. Immerse yourself in the rich cultural heritage of Salzburg, a city that resonates with music and history.",
+    "image": "/salzburg.jpg",
+    "text": "Nestled in Austria, Mondsee is a captivating destination with its eponymous lake, offering azure waters against an alpine backdrop. A haven for water enthusiasts, it provides sailing and swimming, while charming lakeside villages exude timeless allure with cobbled streets and cozy cafes. Hike into the hinterlands for panoramic vistas, where crisp air and pine scents invigorate. Mondsee transforms with the seasons—summer invites outdoor activities, autumn blankets hills in warm colors, and winter brings serene landscapes. Artists find inspiration in Mondsee's charm, where nature and culture blend seamlessly. In every season, Mondsee beckons with timeless allure, promising experiences beyond the ordinary—a journey to rejuvenate amidst the enchanting Austrian landscape."
+  }
+]
