@@ -4,6 +4,8 @@ import PageNavbar from "./components/navbar";
 import Login from "./components/login";
 import HomePage from "./components/homePage";
 import LocationPage from "./components/locationPage";
+import NotFound from "./components/notFound";
+import Footer from "./components/footer";
 
 interface User {
   username: string;
@@ -15,30 +17,34 @@ function App() {
 
   const navigate = useNavigate();
 
-  function handleLogin(loginValues: User) {
+  function onLogin(loginValues: User) {
     setUser(loginValues);
   }
 
-  function handleLogout() {
+  function onLogout() {
     setUser(null);
   }
 
-  function visitLocation(locationId: number) {
+  function handleReadAboutButtonClick(locationId: number) {
     navigate(`/info?locationId=${locationId}`);
   }
 
   return (
-    <>
-      <PageNavbar user={user?.username} handleLogout={handleLogout} />
+    <div className="content">
+      <PageNavbar user={user?.username} onLogout={onLogout} />
       <Routes>
         <Route
           path="/"
-          element={<HomePage handleReadAboutButtonClick={visitLocation} />}
+          element={
+            <HomePage handleReadAboutButtonClick={handleReadAboutButtonClick} />
+          }
         />
-        <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+        <Route path="/login" element={<Login onLogin={onLogin} />} />
         <Route path="/info" element={<LocationPage user={user} />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+      <Footer />
+    </div>
   );
 }
 

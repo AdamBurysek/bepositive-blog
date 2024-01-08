@@ -27,7 +27,7 @@ function Login(props: any) {
 
   const handleLoginButtonClick = () => {
     if (loginValues.username && loginValues.userId) {
-      props.handleLogin(loginValues);
+      props.onLogin(loginValues);
       navigate("/");
     } else {
       setShowErrorSign(true);

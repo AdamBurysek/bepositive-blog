@@ -19,7 +19,7 @@ function PageNavbar(props: any) {
           <Nav className="me-auto">
             <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
             {props.user ? (
-              <Nav.Link onClick={() => props.handleLogout()}>
+              <Nav.Link onClick={() => props.onLogout()}>
                 Logout {props.user}
               </Nav.Link>
             ) : (

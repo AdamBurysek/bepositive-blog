@@ -16,8 +16,8 @@ type Props = {
 const Comment = ({
   onReply,
   onDelete,
-  user = "Adam",
-  userId = "123",
+  user,
+  userId,
   commentUsername = "Adam",
   commentUsernameID = "123",
   commentText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nesciunt consequatur omnis ratione accusantium illo officiis et optio porro. Voluptatibus!",
@@ -63,12 +63,21 @@ const Comment = ({
             <p className="reply-text">{reply.replyText}</p>
           </div>
         ))}
-      <input className="reply-input" onChange={handleReplyChange} />
-      <Button
-        color="green"
-        label="Reply"
-        onClick={() => onReply(replyTextInput)}
-      />
+
+      {user ? (
+        <>
+          <input className="reply-input" onChange={handleReplyChange} />
+          <Button
+            color="green"
+            label="Reply"
+            onClick={() => onReply(replyTextInput)}
+          />
+        </>
+      ) : (
+        <h5 style={{ textAlign: "center", padding: 20, color: "grey" }}>
+          For reply, please log in.
+        </h5>
+      )}
     </div>
   );
 };
