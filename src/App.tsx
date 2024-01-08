@@ -27,6 +27,7 @@ function App() {
 
   function handleReadAboutButtonClick(locationId: number) {
     navigate(`/info?locationId=${locationId}`);
+    window.scrollTo(0, 0);
   }
 
   return (

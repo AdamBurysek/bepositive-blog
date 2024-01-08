@@ -38,10 +38,9 @@ function LocationPage(props: any) {
         .getComments(locationInfo.locationId)
         .then((response) => {
           setComments(response.data);
-          console.log(response.data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
         });
     }
   };
@@ -56,7 +55,9 @@ function LocationPage(props: any) {
       replies: [],
     };
     setComments((prevComments: any) => [...prevComments, newComment]);
-    commentsDataService.createComment(newComment);
+    commentsDataService.createComment(newComment).catch((e) => {
+      console.error(e);
+    });
   }
 
   function onReply(replyText: string, id: string) {
@@ -64,11 +65,15 @@ function LocationPage(props: any) {
       const updatedComments = prevComments.map((comment: any) => {
         if (comment.id === id) {
           const newReply = {
+            commentId: id,
             replyId: new Date().getTime().toString(),
             username: props.user.username,
             userId: props.user.userId,
             text: replyText,
           };
+          commentsDataService.addReply(newReply).catch((e) => {
+            console.error(e);
+          });
           return {
             ...comment,
             replies: [...comment.replies, newReply],
@@ -81,13 +86,15 @@ function LocationPage(props: any) {
   }
 
   function onDelete(id: string) {
+    commentsDataService.deleteComment(id).catch((e) => {
+      console.error(e);
+    });
     setComments((prevComments: any) => {
       const updatedComments = prevComments.filter(
         (comment: any) => comment.id !== id
       );
       return updatedComments;
     });
-    console.log("Deleted");
   }
 
   return (

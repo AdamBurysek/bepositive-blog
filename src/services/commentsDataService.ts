@@ -9,11 +9,11 @@ class CommentsDataService {
     return http.post("/comments", data);
   }
 
-  updateComment(data: any) {
+  addReply(data: any) {
     return http.put("/comments", data);
   }
 
-  deleteComment(id: number) {
+  deleteComment(id: string) {
     return http.delete(`/comments?id=${id}`);
   }
 }
