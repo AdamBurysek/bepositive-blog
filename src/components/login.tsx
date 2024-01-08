@@ -28,7 +28,7 @@ function Login(props: any) {
   const handleLoginButtonClick = () => {
     if (loginValues.username && loginValues.userId) {
       props.onLogin(loginValues);
-      navigate("/");
+      navigate(-1);
     } else {
       setShowErrorSign(true);
       setTimeout(() => {

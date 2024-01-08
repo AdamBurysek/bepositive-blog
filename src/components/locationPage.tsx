@@ -46,15 +46,47 @@ function LocationPage(props: any) {
     }
   };
 
-  function onComment(text: string) {
-    console.log(text);
+  function onComment(commentText: string) {
+    const newComment = {
+      id: new Date().getTime().toString(),
+      locationId: locationInfo.locationId.toString(),
+      text: commentText,
+      username: props.user.username,
+      userId: props.user.userId,
+      replies: [],
+    };
+    setComments((prevComments: any) => [...prevComments, newComment]);
+    commentsDataService.createComment(newComment);
   }
 
-  function onReply(text: string) {
-    console.log(text);
+  function onReply(replyText: string, id: string) {
+    setComments((prevComments: any) => {
+      const updatedComments = prevComments.map((comment: any) => {
+        if (comment.id === id) {
+          const newReply = {
+            replyId: new Date().getTime().toString(),
+            username: props.user.username,
+            userId: props.user.userId,
+            text: replyText,
+          };
+          return {
+            ...comment,
+            replies: [...comment.replies, newReply],
+          };
+        }
+        return comment;
+      });
+      return updatedComments;
+    });
   }
 
-  function onDelete() {
+  function onDelete(id: string) {
+    setComments((prevComments: any) => {
+      const updatedComments = prevComments.filter(
+        (comment: any) => comment.id !== id
+      );
+      return updatedComments;
+    });
     console.log("Deleted");
   }
 
@@ -78,7 +110,8 @@ function LocationPage(props: any) {
         {comments && comments.length > 0 ? (
           comments.map((comment: any) => (
             <Comment
-              key={comment.date}
+              key={comment.id}
+              id={comment.id}
               onReply={onReply}
               onDelete={onDelete}
               user={props.user?.username}
@@ -86,12 +119,13 @@ function LocationPage(props: any) {
               commentText={comment.text}
               commentUsername={comment.username}
               commentUsernameID={comment.userId.toString()}
+              replies={comment.replies}
             />
           ))
         ) : (
           <h5 style={{ paddingTop: 30, color: "grey" }}>Nobody comment this</h5>
         )}
-        <AddComment onComment={onComment} />
+        <AddComment onComment={onComment} user={props.user?.username} />
       </Container>
     </>
   );
