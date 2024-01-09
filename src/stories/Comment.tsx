@@ -2,16 +2,24 @@ import { useEffect, useState } from "react";
 import Button from "./Button";
 import "./comment.css";
 
+interface ReplyData {
+  commentId?: string;
+  replyId: string;
+  username?: string;
+  userId?: string;
+  text: string;
+}
+
 type Props = {
   onReply: (replyTextInput: string, id: string) => void;
   onDelete: (id: string) => void;
   id: string;
   user?: string | null;
   userId?: string | null;
-  commentUsername: string;
+  commentUsername: string | undefined;
   commentUsernameID: string;
   commentText: string;
-  replies?: { replyId: string; username: string; text: string }[];
+  replies?: ReplyData[];
 };
 
 const Comment = ({
@@ -72,7 +80,6 @@ const Comment = ({
             <p className="reply-text">{reply.text}</p>
           </div>
         ))}
-
       {user ? (
         <div className="reply-input-container">
           <input

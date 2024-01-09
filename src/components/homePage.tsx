@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import BlogCard from "./card";
 import locationsData from "../data/locationsData.json";
+import { LocationData } from "./locationPageTypes";
 
 interface Props {
   handleReadAboutButtonClick: (locationId: number) => void;
@@ -18,7 +19,7 @@ const HomePage = (props: Props) => {
           gap: 30,
         }}
       >
-        {locationsData.map((card: any) => (
+        {locationsData.map((card: LocationData) => (
           <BlogCard
             key={card.locationId}
             locationId={card.locationId}

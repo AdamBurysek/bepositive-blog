@@ -1,16 +1,33 @@
 import http from "../http-common";
 
+interface CommentData {
+  id: string;
+  locationId: string;
+  text: string;
+  username?: string;
+  userId?: string;
+  replies?: ReplyData[];
+}
+
+interface ReplyData {
+  commentId?: string;
+  replyId: string;
+  username?: string;
+  userId?: string;
+  text: string;
+}
+
 class CommentsDataService {
   getComments(id: number) {
     return http.get(`/comments?id=${id}`);
   }
 
-  createComment(data: any) {
-    return http.post("/comments", data);
+  createComment(commentData: CommentData) {
+    return http.post("/comments", commentData);
   }
 
-  addReply(data: any) {
-    return http.put("/comments", data);
+  addReply(replyData: ReplyData) {
+    return http.put("/comments", replyData);
   }
 
   deleteComment(id: string) {

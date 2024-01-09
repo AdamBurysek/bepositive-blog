@@ -5,21 +5,20 @@ import { Container, Image } from "react-bootstrap";
 import Comment from "../stories/Comment";
 import AddComment from "../stories/AddComment";
 import locationsData from "../data/locationsData.json";
-
-interface Props {
-  user: {
-    username: string;
-    userId: string;
-  } | null;
-}
+import {
+  Props,
+  CommentData,
+  LocationData,
+  ReplyData,
+} from "./locationPageTypes";
 
 function LocationPage(props: Props) {
-  const [comments, setComments] = useState<any>();
-  const [locationInfo, setLocationInfo] = useState<any>();
+  const [comments, setComments] = useState<CommentData[] | null>(null);
+  const [locationInfo, setLocationInfo] = useState<LocationData | null>(null);
   const url = useLocation();
   const navigate = useNavigate();
 
-  // This reads data from locationData.json when page is visited or refreshed
+  // This reads data from locationData.json when the page is visited or refreshed
   useEffect(() => {
     const queryParams = new URLSearchParams(url.search);
     const locationId = queryParams.get("locationId");
@@ -35,9 +34,11 @@ function LocationPage(props: Props) {
     }
   }, []);
 
-  // After gets data about location, then download comments
+  // After getting data about the location, then download comments
   useEffect(() => {
-    getComments();
+    if (locationInfo) {
+      getComments();
+    }
   }, [locationInfo]);
 
   const getComments = () => {
@@ -58,25 +59,29 @@ function LocationPage(props: Props) {
   // and secondly by sending the corresponding command to the database.
 
   function onComment(commentText: string) {
-    const newComment = {
-      id: new Date().getTime().toString(),
-      locationId: locationInfo.locationId.toString(),
-      text: commentText,
-      username: props.user?.username,
-      userId: props.user?.userId,
-      replies: [],
-    };
-    setComments((prevComments: any) => [...prevComments, newComment]);
-    commentsDataService.createComment(newComment).catch((e) => {
-      console.error(e);
-    });
+    if (locationInfo) {
+      const newComment: CommentData = {
+        id: new Date().getTime().toString(),
+        locationId: locationInfo.locationId.toString(),
+        text: commentText,
+        username: props.user?.username,
+        userId: props.user?.userId,
+        replies: [],
+      };
+      setComments((prevComments) => [...(prevComments || []), newComment]);
+      commentsDataService.createComment(newComment).catch((e) => {
+        console.error(e);
+      });
+    }
   }
 
   function onReply(replyText: string, id: string) {
-    setComments((prevComments: any) => {
-      const updatedComments = prevComments.map((comment: any) => {
+    setComments((prevComments) => {
+      if (!prevComments) return prevComments;
+
+      const updatedComments = prevComments.map((comment) => {
         if (comment.id === id) {
-          const newReply = {
+          const newReply: ReplyData = {
             commentId: id,
             replyId: new Date().getTime().toString(),
             username: props.user?.username,
@@ -101,9 +106,11 @@ function LocationPage(props: Props) {
     commentsDataService.deleteComment(id).catch((e) => {
       console.error(e);
     });
-    setComments((prevComments: any) => {
+    setComments((prevComments) => {
+      if (!prevComments) return prevComments;
+
       const updatedComments = prevComments.filter(
-        (comment: any) => comment.id !== id
+        (comment) => comment.id !== id
       );
       return updatedComments;
     });
@@ -127,7 +134,7 @@ function LocationPage(props: Props) {
         <h4>Comments:</h4>
 
         {comments && comments.length > 0 ? (
-          comments.map((comment: any) => (
+          comments.map((comment) => (
             <Comment
               key={comment.id}
               id={comment.id}
@@ -137,7 +144,7 @@ function LocationPage(props: Props) {
               userId={props.user?.userId}
               commentText={comment.text}
               commentUsername={comment.username}
-              commentUsernameID={comment.userId.toString()}
+              commentUsernameID={comment.userId?.toString() || ""}
               replies={comment.replies}
             />
           ))
