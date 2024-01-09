@@ -7,6 +7,17 @@
   margin-bottom: 10px;
 }
 
+@media screen and (max-width: 525px) {
+  .reply-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .comment-container {
+    overflow: auto;
+  }
+}
+
 .author-name {
   margin: 0;
   padding: 10px;
@@ -35,7 +46,9 @@
   width: 80vw;
   max-width: 330px;
   height: 30px;
-  padding: 0 8px;
+  padding: 16px 10px;
+  border: none;
+  border-radius: 8px;
 }
 
 .reply-line {
@@ -45,4 +58,8 @@
   max-width: 480px;
   height: 1px;
   background-color: rgba(107, 107, 107, 0.121);
+}
+
+#storybook-root {
+  max-width: 100%;
 }

@@ -23,7 +23,7 @@ const Comment = ({
   commentUsername,
   commentUsernameID,
   commentText,
-  replies = [],
+  replies,
 }: Props) => {
   const [deletable, setDeletable] = useState<boolean>(false);
   const [replyTextInput, setReplyTextInput] = useState<string>("");
@@ -43,6 +43,11 @@ const Comment = ({
   const handleReplyChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const text = e.target.value;
     setReplyTextInput(text);
+  };
+
+  const handleReplyButtonClick = () => {
+    onReply(replyTextInput, id);
+    setReplyTextInput("");
   };
 
   return (
@@ -69,14 +74,18 @@ const Comment = ({
         ))}
 
       {user ? (
-        <>
-          <input className="reply-input" onChange={handleReplyChange} />
+        <div className="reply-input-container">
+          <input
+            className="reply-input"
+            value={replyTextInput}
+            onChange={handleReplyChange}
+          />
           <Button
             color="green"
             label="Reply"
-            onClick={() => onReply(replyTextInput, id)}
+            onClick={handleReplyButtonClick}
           />
-        </>
+        </div>
       ) : null}
     </div>
   );

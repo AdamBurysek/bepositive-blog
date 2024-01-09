@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
-import { Container, Image } from "react-bootstrap";
-import commentsDataService from "../services/commentsDataService";
-import Comment from "../stories/Comment";
 import { useLocation, useNavigate } from "react-router-dom";
-import locationsData from "../data/locationsData.json";
+import commentsDataService from "../services/commentsDataService";
+import { Container, Image } from "react-bootstrap";
+import Comment from "../stories/Comment";
 import AddComment from "../stories/AddComment";
+import locationsData from "../data/locationsData.json";
 
-function LocationPage(props: any) {
+interface Props {
+  user: {
+    username: string;
+    userId: string;
+  } | null;
+}
+
+function LocationPage(props: Props) {
   const [comments, setComments] = useState<any>();
   const [locationInfo, setLocationInfo] = useState<any>();
   const url = useLocation();
@@ -28,6 +35,7 @@ function LocationPage(props: any) {
     }
   }, []);
 
+  // After gets data about location, then download comments
   useEffect(() => {
     getComments();
   }, [locationInfo]);
@@ -45,13 +53,17 @@ function LocationPage(props: any) {
     }
   };
 
+  // This function manages interactions such as posting comments, replies, or deleting comments.
+  // Each action occurs twice: first on the frontend to provide a smooth user experience,
+  // and secondly by sending the corresponding command to the database.
+
   function onComment(commentText: string) {
     const newComment = {
       id: new Date().getTime().toString(),
       locationId: locationInfo.locationId.toString(),
       text: commentText,
-      username: props.user.username,
-      userId: props.user.userId,
+      username: props.user?.username,
+      userId: props.user?.userId,
       replies: [],
     };
     setComments((prevComments: any) => [...prevComments, newComment]);
@@ -67,8 +79,8 @@ function LocationPage(props: any) {
           const newReply = {
             commentId: id,
             replyId: new Date().getTime().toString(),
-            username: props.user.username,
-            userId: props.user.userId,
+            username: props.user?.username,
+            userId: props.user?.userId,
             text: replyText,
           };
           commentsDataService.addReply(newReply).catch((e) => {
@@ -99,17 +111,17 @@ function LocationPage(props: any) {
 
   return (
     <>
-      <br />
       <Container
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          marginTop: 15,
         }}
       >
         <h1>{locationInfo?.title}</h1>
-        <Image src={locationInfo?.image} height={300} width={500} />
+        <Image src={locationInfo?.image} className="location-image" />
         <br />
         <p style={{ padding: "0 10vw", fontSize: 20 }}>{locationInfo?.text}</p>
         <h4>Comments:</h4>
@@ -130,7 +142,12 @@ function LocationPage(props: any) {
             />
           ))
         ) : (
-          <h5 style={{ paddingTop: 30, color: "grey" }}>Nobody comment this</h5>
+          <>
+            <h5 style={{ paddingTop: 30, color: "grey" }}>No comments yet</h5>
+            <p style={{ color: "grey", fontSize: 14 }}>
+              Be the first to comment on this post!
+            </p>
+          </>
         )}
         <AddComment onComment={onComment} user={props.user?.username} />
       </Container>

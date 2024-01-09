@@ -10,8 +10,12 @@ interface LoginValues {
   userId: string;
 }
 
-function Login(props: any) {
-  const [showErrorSign, setShowErrorSign] = useState(false);
+interface Props {
+  onLogin: (loginValues: LoginValues) => void;
+}
+
+function Login(props: Props) {
+  const [showErrorSign, setShowErrorSign] = useState<Boolean>(false);
   const [loginValues, setLoginValues] = useState<LoginValues>({
     username: "",
     userId: "",
@@ -25,7 +29,7 @@ function Login(props: any) {
     setLoginValues(updatedLoginValues);
   };
 
-  const handleLoginButtonClick = () => {
+  const handleLoginButtonClick = (): void => {
     if (loginValues.username && loginValues.userId) {
       props.onLogin(loginValues);
       navigate(-1);

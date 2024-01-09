@@ -1,10 +1,18 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-function BlogCard(props: any) {
+interface Props {
+  locationId: number;
+  title: string;
+  desc: string;
+  image: string;
+  handleReadAboutButtonClick: (locationId: number) => void;
+}
+
+function BlogCard(props: Props) {
   return (
-    <Card style={{ width: "28rem" }}>
-      <Card.Img variant="top" src={props.image} height={250} />
+    <Card style={{ width: "32rem" }}>
+      <Card.Img variant="top" src={props.image} />
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.desc}</Card.Text>

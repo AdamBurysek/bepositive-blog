@@ -8,3 +8,9 @@ html {
   min-height: 100vh;
   justify-content: space-between;
 }
+
+.location-image {
+  width: 90vw;
+  max-width: 640px;
+  border-radius: 5px;
+}

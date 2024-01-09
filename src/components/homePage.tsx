@@ -2,7 +2,11 @@ import Container from "react-bootstrap/Container";
 import BlogCard from "./card";
 import locationsData from "../data/locationsData.json";
 
-const HomePage = (props: any) => {
+interface Props {
+  handleReadAboutButtonClick: (locationId: number) => void;
+}
+
+const HomePage = (props: Props) => {
   return (
     <>
       <br />

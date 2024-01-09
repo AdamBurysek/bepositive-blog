@@ -3,7 +3,12 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-function PageNavbar(props: any) {
+interface Props {
+  onLogout: () => void;
+  username: string | undefined;
+}
+
+function PageNavbar(props: Props) {
   const navigate = useNavigate();
   return (
     <Navbar expand="lg" bg="success" data-bs-theme="dark">
@@ -18,9 +23,9 @@ function PageNavbar(props: any) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
-            {props.user ? (
+            {props.username ? (
               <Nav.Link onClick={() => props.onLogout()}>
-                Logout {props.user}
+                Logout {props.username}
               </Nav.Link>
             ) : (
               <Nav.Link onClick={() => navigate("/login")}>Login</Nav.Link>

@@ -14,7 +14,6 @@ interface User {
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
-
   const navigate = useNavigate();
 
   function onLogin(loginValues: User) {
@@ -32,7 +31,7 @@ function App() {
 
   return (
     <div className="content">
-      <PageNavbar user={user?.username} onLogout={onLogout} />
+      <PageNavbar username={user?.username} onLogout={onLogout} />
       <Routes>
         <Route
           path="/"

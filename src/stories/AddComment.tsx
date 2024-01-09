@@ -16,21 +16,37 @@ const AddComment = ({ onComment, user }: Props) => {
     const text = e.target.value;
     setCommentTextInput(text);
   };
+
+  const haldleCommentButtonClick = () => {
+    onComment(commentTextInput);
+    setCommentTextInput("");
+  };
+
   return (
     <div className="add-comment-container">
       {user ? (
         <>
-          {" "}
-          <input className="comment-input" onChange={handleCommentChange} />
+          <input
+            className="comment-input"
+            value={commentTextInput}
+            onChange={handleCommentChange}
+          />
           <Button
             color="green"
             label="Add Comment"
-            onClick={() => onComment(commentTextInput)}
+            onClick={haldleCommentButtonClick}
           />
         </>
       ) : (
-        <h5 style={{ textAlign: "center", padding: 20, color: "grey" }}>
-          For add comment, please log in.
+        <h5
+          style={{
+            textAlign: "center",
+            paddingTop: 25,
+            paddingBottom: 20,
+            color: "grey",
+          }}
+        >
+          To add a comment, please log in.
         </h5>
       )}
     </div>
