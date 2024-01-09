@@ -12,7 +12,11 @@ interface Props {
 function BlogCard(props: Props) {
   return (
     <Card style={{ width: "32rem" }}>
-      <Card.Img variant="top" src={props.image} />
+      <Card.Img
+        variant="top"
+        src={props.image}
+        onClick={() => props.handleReadAboutButtonClick(props.locationId)}
+      />
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.desc}</Card.Text>
