@@ -73,7 +73,7 @@ const Comment = ({
       ) : null}
       <p className="comment-text">{commentText}</p>
       {replies &&
-        replies.map((reply: any) => (
+        replies.map((reply: ReplyData) => (
           <div key={reply.replyId}>
             <div className="reply-line" />
             <h4 className="reply-name">{reply.username}</h4>
