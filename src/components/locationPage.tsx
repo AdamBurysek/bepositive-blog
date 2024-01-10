@@ -36,23 +36,23 @@ function LocationPage(props: Props) {
 
   // After getting data about the location, then download comments
   useEffect(() => {
+    const getComments = () => {
+      if (locationInfo) {
+        commentsDataService
+          .getComments(locationInfo.locationId)
+          .then((response) => {
+            setComments(response.data);
+          })
+          .catch((e) => {
+            console.error(e);
+          });
+      }
+    };
+
     if (locationInfo) {
       getComments();
     }
   }, [locationInfo]);
-
-  const getComments = () => {
-    if (locationInfo) {
-      commentsDataService
-        .getComments(locationInfo.locationId)
-        .then((response) => {
-          setComments(response.data);
-        })
-        .catch((e) => {
-          console.error(e);
-        });
-    }
-  };
 
   // This function manages interactions such as posting comments, replies, or deleting comments.
   // Each action occurs twice: first on the frontend to provide a smooth user experience,
