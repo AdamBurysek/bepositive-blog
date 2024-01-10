@@ -15,7 +15,7 @@ interface Props {
 }
 
 function Login(props: Props) {
-  const [showErrorSign, setShowErrorSign] = useState<Boolean>(false);
+  const [showErrorSign, setShowErrorSign] = useState<boolean>(false);
   const [loginValues, setLoginValues] = useState<LoginValues>({
     username: "",
     userId: "",
