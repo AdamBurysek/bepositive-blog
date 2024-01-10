@@ -1,19 +1,19 @@
 import http from "../http-common";
 
-interface CommentData {
+export interface CommentData {
   id: string;
   locationId: string;
   text: string;
-  username: string;
-  userId: string;
+  username?: string;
+  userId?: string;
   replies: ReplyData[];
 }
 
-interface ReplyData {
-  commentId: string;
+export interface ReplyData {
+  commentId?: string;
   replyId: string;
-  username: string;
-  userId: string;
+  username?: string;
+  userId?: string;
   text: string;
 }
 
