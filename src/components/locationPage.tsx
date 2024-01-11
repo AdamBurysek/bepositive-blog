@@ -130,7 +130,9 @@ function LocationPage(props: Props) {
         <h1>{locationInfo?.title}</h1>
         <Image src={locationInfo?.image} className="location-image" />
         <br />
-        <p style={{ padding: "0 10vw", fontSize: 20 }}>{locationInfo?.text}</p>
+        <p style={{ fontSize: 20, width: "90vw", maxWidth: 800 }}>
+          {locationInfo?.text}
+        </p>
         <h4>Comments:</h4>
 
         {comments && comments.length > 0 ? (
