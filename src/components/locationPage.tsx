@@ -20,19 +20,23 @@ function LocationPage(props: Props) {
 
   // This reads data from locationData.json when the page is visited or refreshed
   useEffect(() => {
-    const queryParams = new URLSearchParams(url.search);
-    const locationId = queryParams.get("locationId");
-    const locationIdNumber = locationId ? parseInt(locationId, 10) : null;
-    const selectedLocation = locationsData.find(
-      (location) => location.locationId === locationIdNumber
-    );
-    if (selectedLocation) {
-      setLocationInfo(selectedLocation);
-    } else {
-      console.error(`Card with id ${locationId} not found`);
-      navigate("/notFound");
+    getData();
+
+    function getData() {
+      const queryParams = new URLSearchParams(url.search);
+      const locationId = queryParams.get("locationId");
+      const locationIdNumber = locationId ? parseInt(locationId, 10) : null;
+      const selectedLocation = locationsData.find(
+        (location) => location.locationId === locationIdNumber
+      );
+      if (selectedLocation) {
+        setLocationInfo(selectedLocation);
+      } else {
+        console.error(`Card with id ${locationId} not found`);
+        navigate("/notFound");
+      }
     }
-  }, []);
+  }, [navigate, url.search]);
 
   // After getting data about the location, then download comments
   useEffect(() => {

@@ -36,17 +36,17 @@ const Comment = ({
   const [deletable, setDeletable] = useState<boolean>(false);
   const [replyTextInput, setReplyTextInput] = useState<string>("");
 
-  function checkDeletableStatus() {
-    if (user === commentUsername && userId === commentUsernameID) {
-      setDeletable(true);
-    } else {
-      setDeletable(false);
-    }
-  }
-
   useEffect(() => {
     checkDeletableStatus();
-  }, [user]);
+
+    function checkDeletableStatus() {
+      if (user === commentUsername && userId === commentUsernameID) {
+        setDeletable(true);
+      } else {
+        setDeletable(false);
+      }
+    }
+  }, [user, commentUsername, userId, commentUsernameID]);
 
   const handleReplyChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const text = e.target.value;
