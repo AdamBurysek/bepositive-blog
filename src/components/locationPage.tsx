@@ -24,15 +24,14 @@ function LocationPage(props: Props) {
 
     function getData() {
       const queryParams = new URLSearchParams(url.search);
-      const locationId = queryParams.get("locationId");
-      const locationIdNumber = locationId ? parseInt(locationId, 10) : null;
+      const locationIdNumber = parseInt(queryParams.get("locationId")!);
       const selectedLocation = locationsData.find(
         (location) => location.locationId === locationIdNumber
       );
       if (selectedLocation) {
         setLocationInfo(selectedLocation);
       } else {
-        console.error(`Card with id ${locationId} not found`);
+        console.error(`Card with id ${locationIdNumber} not found`);
         navigate("/notFound");
       }
     }
