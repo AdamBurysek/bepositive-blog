@@ -1,27 +1,21 @@
-# React + TypeScript + Vite
+# Interview task for BePositive agency
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Stack
+In this project, we are expecting usage of React, React Bootstrap, Typescript, and Storybook.
 
-Currently, two official plugins are available:
+### Assignment
+Your task will be to create a simple blog. It will consist of a homepage with a list of at least two
+posts. It will also be possible to open a detail of each post. Part of the detail will be comments.
+The immersion in comments is not necessary, but there should be an answer option. By ctrl+rclicking, written comments are preserved. The app should be serverless. You should also
+create a storybook for at least two components.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Bonus
 
-## Expanding the ESLint configuration
+In the bonus task, you can create a test for your application.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Evaluation
+In your work, we will evaluate the following:
+• Code quality – clarity of code, code structure, annotations, division within the file
+system,
+• Creativity – the ability to create unspecified parts of the assignment,
+• Data structure and ability to work with data and forms.
